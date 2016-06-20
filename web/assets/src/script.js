@@ -17,7 +17,7 @@ var Filter = React.createClass({
             item = {id: item, name: item}
         }
         return (
-            <option value={item.id}>{item.name}</option>
+            <option key={item.id} value={item.id}>{item.name}</option>
         );
     },
     getInitialState: function() {
@@ -65,7 +65,7 @@ var Pagination = React.createClass({
         return {limit:10, page:1, total:0};
     },
     changePage: function(e) {
-        this.state.page = e.target.textContent;
+        this.state.page = parseInt(e.target.textContent);
         var filter = {
             limit: this.state.limit,
             offset: (this.state.page-1) * this.state.limit
@@ -75,11 +75,11 @@ var Pagination = React.createClass({
     createPage: function(page) {
         if (page == this.state.page) {
             return (
-                <li className="active"><a>{page}</a></li>
+                <li key={page} className="active"><a>{page}</a></li>
             );
         } else {
             return (
-                <li><a onClick={this.changePage}>{page}</a></li>
+                <li key={page}><a onClick={this.changePage}>{page}</a></li>
             );
         }
     },
@@ -201,7 +201,7 @@ var Playlist = React.createClass({
 
         var songs = this.state.rows.map(function(song) {
             return (
-                <Song song={song} />
+                <Song key={song.id} song={song} />
             );
         });
 
