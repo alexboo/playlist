@@ -11,7 +11,7 @@ Web-версия проекта доступна по адресу: http://ec2-5
 
 Затем произвести миграцию
 
-`php app/console doctrine:migrations:migrate`
+`php bin/console doctrine:migrations:migrate`
 
 И установить зависимости для frontend используя npm.
 
